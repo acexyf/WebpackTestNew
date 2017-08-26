@@ -1,0 +1,11 @@
+{
+    "api":[{
+        "type":"get",
+        "path":"/homeData",
+        "file":"home"
+    },{
+        "type":"get",
+        "path":"/homeDatas",
+        "file":"homes"
+    }]
+}

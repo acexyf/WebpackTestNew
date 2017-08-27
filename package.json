@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --inline --progress --colors --config webpack.dev.config.js --host 0.0.0.0",
     "build": "webpack --config webpack.build.config.js",
-    "server":"node config/server",
+    "server": "node config/server",
+    "start":"node config/server",
     "clean": "rm -rf ./build"
   },
   "author": "",
@@ -21,6 +22,7 @@
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "open-browser-webpack-plugin": "0.0.5",

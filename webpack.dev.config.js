@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var entry = require('./entry.js');
+var ipAddress = getIPAdress();
 //服务器端口
 var serverPort = 8086;
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
 		path: __dirname + '/build',
 		filename: '[name].bundle.js',
 		publicPath: "/",
+		sourceMapFilename: '[name].map'
 	},
 	devtool: 'source-map',
 	module: {
@@ -50,18 +52,20 @@ module.exports = {
 		]
 	},
 	devServer: {
+		hot: true,
 		port: serverPort,
 		contentBase: __dirname + "/src/site",
 		publicPath: '/',
 		disableHostCheck: true,
 		compress: true,
 		proxy: {
-		  '/api': 'http://'+getIPAdress()+':8087'
+		  '/api': 'http://'+ipAddress+':8087',
+		  '/lib': 'http://'+ipAddress+':8087'
 		}
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new OpenBrowserPlugin({ url: 'http://'+getIPAdress()+':'+serverPort }),
+		new OpenBrowserPlugin({ url: 'http://'+ipAddress+':'+serverPort }),
 		new ExtractTextPlugin({
 			filename: '[name].bundle.css',
 			disable: false,

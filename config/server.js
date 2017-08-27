@@ -3,6 +3,8 @@ var path = require('path');
 var port = 8087;
 var app = express();
 var fs = require('fs');
+var exec = require('child_process').exec;
+
 
 
 var routeArr = [];
@@ -55,7 +57,7 @@ fs.readdir(path.resolve(__dirname, '../src/site/'), function (err, files) {
 
 
 function loadRoute(){
-    console.log(routeArr, 'routeArr');
+    // console.log(routeArr, 'routeArr');
     routeArr.map(function(elem){
         if(elem.type == 'get'){
             app.get('/api'+elem.path,function(req,res){
@@ -68,14 +70,19 @@ function loadRoute(){
         }
     });
 
+    app.use('/lib',express.static(path.resolve(__dirname,'../src/lib/')));
+
     let server = app.listen(port, function() {
         let ipaddress = getIPAdress();
         if (ipaddress) {
-            console.log('please open ' + ipaddress + ':' + port + ' in browser');
+            // console.log('please open ' + ipaddress + ':' + port + ' in browser');
         } else {
             ipaddress = '127.0.0.1';
-            console.log('no networking, please open ' + ipaddress + ':' + port + ' in browser')
+            // console.log('no networking, please open ' + ipaddress + ':' + port + ' in browser')
         }
+
+        //启动webpack
+        exec('npm run dev');
     });
 }
 

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var entry = require('./entry.js');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	context: __dirname + "/src",
 	entry: entry,
@@ -63,5 +64,6 @@ module.exports = {
 				warnings: false,
 			},
 		}),
+		new HtmlWebpackPlugin()
 	]
 };

@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --hot --inline --progress --colors --config webpack.dev.config.js --host 0.0.0.0",
     "build": "webpack --config webpack.build.config.js",
     "server": "node config/server",
-    "start":"node config/server",
+    "start": "node config/server",
     "clean": "rm -rf ./build"
   },
   "author": "",

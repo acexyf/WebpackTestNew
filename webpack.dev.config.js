@@ -42,8 +42,12 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				loaders: "babel-loader",
-				query: { presets: ["es2015"] }
+                loaders: "babel-loader",
+                exclude: /node_modules/,
+				query: { 
+                    presets: ["es2015"],
+                    plugins: ["transform-runtime"]
+                }
 			},
 			{
 				test: /\.(png|jpeg|gif|jpg)$/,

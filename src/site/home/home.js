@@ -1,7 +1,17 @@
 import './home.less';
 
+import moment from 'moment';
+
+
+var now = moment('2017-09-21 08:30:00')
+
+
+
+console.log(moment('2017-09-21 08:30:00').add({hours:8}))
+
 let startTime = new Date();
 
+console.log(123)
 // $('.test')
 // .on('mousedown', function(){
 //     console.log('mousedown');
